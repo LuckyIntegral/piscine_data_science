@@ -5,8 +5,7 @@ import sys
 def get_input() -> str:
     ''' function to receive input '''
     if len(sys.argv) > 2:
-        print('AssertionError : more than one argument is provided')
-        sys.exit(1)
+        raise AssertionError('more than one argument is provided')
 
     if len(sys.argv) == 2:
         return sys.argv[1]
@@ -41,17 +40,13 @@ def analyse_text(text: str) -> None:
     print(f"{digits} digits")
 
 
-# 2 upper letters
-# 121 lower letters
-# 8 punctuation marks
-# 25 spaces
-# 15 digits
-
-
 def main():
     ''' entrypoint of text analysis program '''
-    text = get_input()
-    analyse_text(text)
+    try:
+        text = get_input()
+        analyse_text(text)
+    except AssertionError as ae:
+        print(f'AssertionError : {ae}')
 
 
 if __name__ == "__main__":
