@@ -26,18 +26,3 @@ def callLimit(limit: int):
             return None
         return limit_function
     return callLimiter
-
-
-@callLimit(3)
-def f():
-    print("f()")
-
-
-@callLimit(1)
-def g():
-    print("g()")
-
-
-for i in range(3):
-    f()
-    g()

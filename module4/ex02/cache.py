@@ -1,9 +1,10 @@
 import time
-import functools as ft
+
 
 def cache():
     '''decorator that caches the result of a function'''
     cache = {}
+
     def wrapper(func):
         def inner(*args, **kwargs):
             if args not in cache:
